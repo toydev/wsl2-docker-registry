@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Docker Registry のドメインをスペース区切りで列挙する（HTTPS の設定のためのもの）。
+export DOCKER_REGISTRY_DOMAINS='localhost $(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)'
+export DOCKER_REGISTRY_PORT=5000

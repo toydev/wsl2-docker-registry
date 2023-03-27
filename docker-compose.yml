@@ -1,0 +1,16 @@
+version: '3'
+services:
+  registry:
+    image: 'registry:2'
+    environment:
+      REGISTRY_HTTP_ADDR: 0.0.0.0:443
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/registry.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/registry.key
+    ports:
+      - '${DOCKER_REGISTRY_PORT}:443'
+    volumes:
+      - ./certs:/certs
+      - registry_data:/var/lib/registry
+
+volumes:
+  registry_data:
